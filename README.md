@@ -1,1 +1,1 @@
-# practice-of-Scala
+# Practice of Scala programming
