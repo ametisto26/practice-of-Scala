@@ -29,4 +29,28 @@ val twoThreeFour = 2 :: threeFour // :: は cons と読むらしい
 println(twoThreeFour)
 
 val oneTwoThreeFourFive = 1 :: 2 :: 3 :: 4 :: 5 :: Nil
+println(oneTwoThreeFourFive)
 
+
+//tuple 
+val pair = (26, "Ametisto")
+println(pair._1)
+println(pair._2)
+
+val point = Tuple22(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22)
+//val point = Tuple23(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23)
+
+//immutable set
+var jetSet = Set("Boeing", "Airbus")
+jetSet += "Lear"
+println(jetSet.contains("Cessna"))
+
+//mutable set
+import scala.collection.mutable
+val langSet = mutable.Set("Scala", "Python")
+langSet += "Rust"
+println(langSet)
+
+import scala.collection.immutable.HashSet
+val hashSet = HashSet("Tomatoes", "Chilies")
+println(hashSet + "Coriander")
