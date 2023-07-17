@@ -54,3 +54,19 @@ println(langSet)
 import scala.collection.immutable.HashSet
 val hashSet = HashSet("Tomatoes", "Chilies")
 println(hashSet + "Coriander")
+
+
+//mutable map
+import scala.collection.mutable
+val treasureMap = mutable.Map[Int, String]()
+treasureMap += (1, "Go to the island.")
+treasureMap += (2, "Find big X on ground.")
+treasureMap += (3, "Dig.")
+println(treasureMap(2)) //出力は"Find big X on ground."のはずである。
+
+//immutable map
+val romanNumeral = Map(
+    1 -> "I", 2 -> "II", 3 -> "III", 4 -> "IV", 5 -> "V"
+)
+println(romanNumeral(4)) //出力は"IV"のはずである。
+
