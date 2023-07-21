@@ -1,3 +1,4 @@
+//数値
 val hex = 0x5
 val hex2 = 0x00ff
 val hex3 = 0xCafebabe
@@ -53,3 +54,23 @@ val nm = s
 //Boolean
 val t = true
 val f = false
+
+
+//文字列補間
+val nameOfReader = "John Doe"
+println(s"Hello, $nameOfReader!")
+
+s"The answer is ${5 * 3}"
+
+//import math.scala
+f"${math.Pi}"
+f"${math.Pi}%.10f"
+f"${math.Pi}%15.10f"
+f"${math.Pi}%.17f" //あまり意味がない指定
+
+println(s"No\\\\escape!") //No\\escape!
+println(raw"No\\\\escape!") //No\\\\escape!
+println(f"No\\\\escape!") //No\\escape!
+
+val pi = "Pi"
+println(f"${pi} is approximately ${math.Pi}%.5f.")
