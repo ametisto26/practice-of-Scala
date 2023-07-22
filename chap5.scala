@@ -152,3 +152,28 @@ salt() | pepper()
 1 << 2
 -1 >> 31
 -1 >>> 31 //符号なし
+
+
+//等価性
+1 == 2 //false
+1 != 2
+3 == 3
+1 == 1L //true
+1d == 1l //true
+
+List(1, 2, 3) == List(1, 2, 3)
+List("Hello") == null
+List() == Nil
+
+2 << 4
+2 << 2 + 2
+2 + 2 << 2
+1 + 1 << 4
+
+//リッチ演算
+5 max 7
+5 min 0
+//-2.213 abs
+//-2.6 round
+//5e33 isInfinity
+4 to 8
