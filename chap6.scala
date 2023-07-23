@@ -15,8 +15,12 @@ class Rational(n: Int, d: Int) {
        private def gcd(a: Int, b: Int): Int = 
               if (b == 0) a else gcd(b, a % b)
 
-       def add(that: Rational): Rational = {
-              new Rational(numer * that.denom +that.numer * denom, denom * that.denom)
+       def +(that: Rational): Rational = {
+              new Rational(numer * that.denom + that.numer * denom, denom * that.denom)
+       }
+
+       def *(that: Rational): Rational = {
+              new Rational(numer * that.numer, denom * that.denom)
        }
 
        def lessThan(that: Rational) =
@@ -31,7 +35,8 @@ class Rational(n: Int, d: Int) {
 val q1 = new Rational(1, 2)
 val q2 = new Rational(2, 3)
 
-val q3 = q1 add q2
+val q3 = q1 + q2
+val q4 = q1 * q2
 
 q1.numer
 q1.denom
