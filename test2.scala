@@ -3,7 +3,7 @@ object Mag extends App {
               ((n + 4) * 2 - 6) / 2 - n
        }
 
-       for(i <- 1 to 13){
+       for(i <- 1 to 13){ //どうせすべて１になる。
               println(s"$i : ${dog(i)}")
        }
 }
