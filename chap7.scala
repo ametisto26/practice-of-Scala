@@ -29,7 +29,7 @@ def gcd(x: Long, y: Long): Long =
 
 import scala.io.StdIn.readLine
 
-var line = readLine() // 何か入力すると始まり，何も入力しないままEnterで終わる。
+var line = readLine() // 何か入力すると始まり，何も入力しないままEnterキーを押すと終わる。
 while (line != "") {
        line = readLine()
        println("Read: " + line)
@@ -38,3 +38,37 @@ while (line != "") {
 
 def greet() = { println("Yo")}
 val whatAmI = greet()
+
+
+// for
+val filesHere = (new java.io.File(".")).listFiles
+for (file <- filesHere)
+       println(file) //出力を確認する。
+
+for (i <- 1 to 5)
+       println("Iteration" + i)
+
+for (i <- 1 until 5)
+       println("Iteration" + i)
+
+// Scala ではあまり見ない for の使い方
+for (i <- 0 to filesHere.length - 1)
+       println(filesHere(i))
+
+
+// filter
+for (file <- filesHere if file.getName.endsWith(".scala"))
+       println(file) 
+
+//上と同じ出力を得る。
+for (file <- filesHere)
+       if (file.getName.endsWith(".scala"))
+              println(file) 
+
+
+for (
+       file <- filesHere
+       if file.isFile //() ディレクトリを除くためのもの（この場合は実質無意味である）
+       if file.getName.endsWith(".scala")
+       )
+       println(file) 
