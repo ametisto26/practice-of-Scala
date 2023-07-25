@@ -65,7 +65,7 @@ for (file <- filesHere)
        if (file.getName.endsWith(".scala"))
               println(file) 
 
-
+//複数の場合
 for (
        file <- filesHere
        if file.isFile //() ディレクトリを除くためのもの（この場合は実質無意味である）
