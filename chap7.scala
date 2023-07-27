@@ -78,14 +78,75 @@ val filesHere = (new java.io.File(".")).listFiles
 
 def fileLines(file: java.io.File) = scala.io.Source.fromFile(file).getLines().toArray
 
+// def grep(pattern: String) = {
+//        for (
+//               file <- filesHere
+//               if (file.getName.endsWith(".scala"));
+//               line <- fileLines(file)
+//               if (line.trim.matches(pattern))
+//        )
+//        println(s"$file: ${line.trim}")
+// }
+// grep(".*gcd.*")
+
+
+// for{} and bind
 def grep(pattern: String) = {
-       for (
+       for {
               file <- filesHere
-              if (file.getName.endsWith(".scala"));
+              if file.getName.endsWith(".scala")
               line <- fileLines(file)
-              if (line.trim.matches(pattern))
-       )
-       println(s"$file: ${line.trim}")
+              trimmed = line.trim
+              if trimmed.matches(pattern)
+       }
+       println(s"$file: $trimmed")
 }
 grep(".*gcd.*")
+
+
+// for [generator] yield [main]
+def scalaFiles = {
+       for {
+              file <- filesHere
+              if file.getName.endsWith(".scala")
+       }
+       yield file
+}
+scalaFiles
+
+/* これはエラーになる。
+def scalaFiles = {
+       for {
+              file <- filesHere
+              if file.getName.endsWith(".scala")
+       }
+       {
+              yield file
+       }
+}
+*/
+
+val forLineLength = {
+       for {
+              file <- filesHere
+              if file.getName.endsWith(".scala")
+              line <- fileLines(file)
+              trimmed = line.trim
+              if trimmed.matches(".*for.*")
+       }
+       yield trimmed.length
+}
+
+
+
+// 例外
+//throw new IllegalArgumentException
+
+import scala.io.StdIn.readLine
+var n = readLine().toInt
+
+val half = {
+       if (n % 2 == 0) n / 2
+       else throw new RuntimeException("n must be even")
+}
 
