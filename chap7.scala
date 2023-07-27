@@ -19,7 +19,6 @@ def gcdLoop(x: Long, y: Long): Long = {
 def gcd(x: Long, y: Long): Long = 
        if (y == 0) x else gcd(y, x % y)
 
-
 //do-while は Scala3 ではサポート外
 // var line = ""
 // do {
@@ -72,3 +71,21 @@ for (
        if file.getName.endsWith(".scala")
        )
        println(file) 
+
+
+// forのネスト
+val filesHere = (new java.io.File(".")).listFiles
+
+def fileLines(file: java.io.File) = scala.io.Source.fromFile(file).getLines().toArray
+
+def grep(pattern: String) = {
+       for (
+              file <- filesHere
+              if (file.getName.endsWith(".scala"));
+              line <- fileLines(file)
+              if (line.trim.matches(pattern))
+       )
+       println(s"$file: ${line.trim}")
+}
+grep(".*gcd.*")
+
