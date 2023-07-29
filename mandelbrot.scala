@@ -100,5 +100,60 @@ object Model {
        }
 }
 
+object View extends JFXApp {
+       import Model._
 
+       val canvas = new Canvas(W, H) {
+              onMousePressed = (e: MouseEvent) => onDragStart(e)
+              onMouseReleased = (e: MouseEvent) => { onDragFinish(e); draw() }
+       }
 
+       val quitButton = new Button("終了") { onAction => () => onQuit() }
+
+       val backwardButton = new Button("戻る") {
+              onAction = () => {
+                     backward(history) match {
+                            case (h, true) =>{ update(h); draw() }
+                            case _ => ()
+                     }
+              }
+       }
+
+       val forwardButton = new Button("前へ") {
+              onAction = () => {
+                     forward(history) match {
+                            case (h, true) => { update(h); draw() }
+                            case _ => ()
+                     }
+              }
+       }
+
+       val favoriteButton = new Button("STAR") {
+              onAction = () => { favorites = currentRegion(history) :: favorites }
+       }
+
+       stage = new PrimaryStage {
+              title = theTitle()
+              scene = new Scene {
+                     root = new BorderPane {
+                            hgrow = Priority.Always
+                            vgrow = Priority.Always
+                            center = canvas
+                            top = new HBox {
+                                   children = List(quitButton, backwardButton, forwardButton, favoriteButton)
+                            }
+                     }
+              }
+       }
+
+       def draw() {
+              val gc = canvas.graphicsContext2D
+              val pw = gc.pixelWriter
+              gc.clearRect(0, 0, W - 1, H - 1)
+              for (x <- Range(0, W - 1); y <- Range(0, H - 1))
+                     pw.setColor(x, y, color(x, y))
+              stage.title = theTitle()
+       }
+
+       draw()
+}
