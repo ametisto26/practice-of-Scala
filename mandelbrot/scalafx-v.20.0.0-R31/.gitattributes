@@ -1,3 +1,0 @@
-# Set the default line separator behavior, in case people don't have core.autocrlf set.
-# [[https://stackoverflow.com/a/42135910]]
-* text=auto eol=lf
