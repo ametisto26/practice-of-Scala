@@ -150,3 +150,73 @@ val half = {
        else throw new RuntimeException("n must be even")
 }
 
+
+
+// 例外のキャッチ
+// try-catch
+import java.io.FileReader
+import java.io.FileNotFoundException
+import java.io.IOException
+
+try {
+       val f = new FileReader("input.txt") // ファイルを使ってクローズする。
+} catch {
+       case ex: FileNotFoundException => // Not exist
+       case ex: IOException => // I/O Error
+}
+
+
+// try-finally
+import java.io.FileReader
+
+val file = new FileReader("input.txt")
+try {
+       // use the file
+} finally { 
+       file.close() //確実にファイルをクローズする。
+}
+
+
+// 値を生成するcatch
+import java.net.URL
+import java.net.MalformedURLException
+
+def urlFor(path: String) = {
+       try {
+              new URL(path)
+       } catch {
+              case e: MalformedURLException => new URL("https://www.scala-lang.org")
+       }
+}
+
+
+//実験用
+def f(): Int = try return 1 finally return 2 // 結果値は2になる。
+def g(): Int = try 1 finally 2 // 結果値は1になる。
+
+
+// 副作用のあるmatch
+val firstArg = if (args.length > 0) args(0) else "" //　このままではエラーになる。
+
+firstArg match {
+       case "salt" => println("pepper")
+       case "chips" => println("salsa")
+       case "eggs" => println("bacon")
+       case _ => println("huh?")
+}
+
+
+// 結果値を生成するmatch
+val firstArg = if (!args.isEmpty) args(0) else "" //　このままではエラーになる。
+
+val friend =
+       firstArg match {
+              case "salt" => "pepper"
+              case "chips" => "salsa"
+              case "eggs" =>  "bacon"
+              case _ => "huh?"
+       }
+
+println(friend)
+
+
