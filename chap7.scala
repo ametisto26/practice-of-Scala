@@ -219,4 +219,23 @@ val friend =
 
 println(friend)
 
+// var i = 0
+// var foundIt = false
+// while (i < args.length && !foundIt){
+//        if (!args(i).startsWith("-")){
+//               if (args(i).endsWith(".scala")){
+//                      foundIt = true
+//               }
+//        }
+//        i += 1
+// }
+
+def searchFrom(i: Int, args: Array[String]): Int = {
+       if (i >= args.length) -1
+       else if (args(i).startsWith("-")) searchFrom(i + 1, args)
+       else if (args(i).endsWith(".scala")) i
+       else searchFrom(i + 1, args)
+}
+
+
 
