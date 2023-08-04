@@ -238,4 +238,41 @@ def searchFrom(i: Int, args: Array[String]): Int = {
 }
 
 
+def printMultiTable() = {
+       var i = 1
+       while (i <= 9) {
+              var j = 1
+              while (j <= 9) {
+                     val prod = (i * j).toString
+                     var k = prod.length
+                     while (k < 3) {
+                            print(" ")
+                            k += 1
+                     }
+              print(prod)
+              j += 1
+              }
+       println()
+       i += 1
+       }
+}
+printMultiTable()
 
+
+def makeRowSeq(row: Int) = {
+       for (col <- 1 to 9) yield {
+              val prod = (row * col).toString
+              val padding = " " * (3 - prod.length)
+              padding + prod
+       }
+}
+
+def makeRow(row: Int) = makeRowSeq(row).mkString // toString ではない
+
+def MultiTable() = {
+       val tableSeq = {
+              for (row <- 1 to 9) yield makeRow(row)
+       }
+       tableSeq.mkString("\n")
+}
+MultiTable()
