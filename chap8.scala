@@ -50,3 +50,6 @@ increase = (x: Int) => {
        println("Hello!")
        x + 9999
 }
+increase(10)
+
+
