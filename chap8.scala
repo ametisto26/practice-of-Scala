@@ -52,4 +52,20 @@ increase = (x: Int) => {
 }
 increase(10)
 
+// foreach メソッド　詳しくはchap17を参照
+val someNum = List(-11, 50, 64, -6, 20, 26)
+someNum.foreach((x: Int) => println(x))
+
+//filter メソッド
+someNum.filter((x: Int) => x > 20)
+
+
+//関数リテラルの短縮形
+val someNum = List(-11, 50, 64, -6, 20, 26)
+someNum.foreach((x) => println(x)) // 型を省略
+
+someNum.filter(x => x > 20) // 推論で型が分かるパラメータを囲むかっこは省略可能
+
+
+//プレースホルダー構文
 
