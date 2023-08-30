@@ -110,9 +110,14 @@ more = 9990
 addMore(10) // 10000 と出力される
 
 
-// val someNum = List(-11, 50, 64, -6, 20, 26)
-// var ss = 1
+// まわりくどい方法で総和を求める
+val someNum = List(-11, 50, 64, -6, 20, 26)
+var sum = 0
 
-// someNum.foreach(sum += _)
+someNum.foreach(sum += _)
 
-// sum
+println(sum)
+
+
+
+
