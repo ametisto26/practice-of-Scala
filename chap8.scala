@@ -97,3 +97,22 @@ paf2(3)
 val someNum = List(-11, 50, 64, -6, 20, 26)
 someNum.foreach(println) // 空白を残す
 
+
+// クロージャー
+var more = 5
+val addMore = (x: Int) => x + more
+// 先述の val a = (x: Int) => x + 1 は閉項（closed term）と呼ばれる
+// これに対して val addMore = (x: Int) => x + more は開項（open term）と呼ばれる。
+addMore(10) // 関数値をクロージャーと呼ぶ。
+
+
+more = 9990
+addMore(10) // 10000 と出力される
+
+
+// val someNum = List(-11, 50, 64, -6, 20, 26)
+// var ss = 1
+
+// someNum.foreach(sum += _)
+
+// sum
