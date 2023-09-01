@@ -116,7 +116,7 @@ var sum = 0
 
 someNum.foreach(sum += _)
 
-println(sum)
+println(sum) // 総和
 
 
 
