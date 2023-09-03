@@ -105,10 +105,9 @@ val addMore = (x: Int) => x + more
 // これに対して val addMore = (x: Int) => x + more は開項（open term）と呼ばれる。
 addMore(10) // 関数値をクロージャーと呼ぶ。
 
-
-more = 9990
+more = 9990 // more を変更
 addMore(10) // 10000 と出力される
-
+addMore(100) // 10090 と出力される（x を変更）
 
 // まわりくどい方法で総和を求める
 val someNum = List(-11, 50, 64, -6, 20, 26)
