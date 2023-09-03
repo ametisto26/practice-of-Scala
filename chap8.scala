@@ -125,4 +125,9 @@ def echo(args: String*) = {
 
 echo()
 echo("One")
-echo("One", "Two")
+echo("One", "Two", "Three")
+
+val seqst = Seq("a", "b", "c")
+echo(seqst) // エラー
+echo(seqst: _*) // Seq の個々の要素を引数として渡すことの明示
+
