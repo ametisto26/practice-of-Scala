@@ -118,5 +118,11 @@ someNum.foreach(sum += _)
 println(sum) // 総和
 
 
+//関数の最後のパラメータが繰り返されることの指定
+def echo(args: String*) = {
+       for (arg <- args) println(arg)
+}
 
-
+echo()
+echo("One")
+echo("One", "Two")
