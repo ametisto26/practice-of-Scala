@@ -118,6 +118,8 @@ someNum.foreach(sum += _)
 println(sum) // 総和
 
 
+//連続パラメーター
+
 //関数の最後のパラメータが繰り返されることの指定
 def echo(args: String*) = {
        for (arg <- args) println(arg)
@@ -130,4 +132,33 @@ echo("One", "Two", "Three")
 val seqst = Seq("a", "b", "c")
 echo(seqst) // エラー
 echo(seqst: _*) // Seq の個々の要素を引数として渡すことの明示
+
+
+// 名前付き引数
+def speed(distance: Double, time: Double): Double = {
+       distance / time
+}
+
+speed(100, 10)
+speed(time = 10, distance = 100)
+speed(100, 10) == speed(time = 10, distance = 100)
+
+// パラメーターのデフォルト値
+def printTime(out: java.io.PrintStream = Console.out) = { // デフォルト値が1個
+       out.println("time = " + System.currentTimeMillis())
+}
+
+printTime()
+printTime(Console.err) //　標準エラー出力にログを送り込む
+
+def printTime2(out: java.io.PrintStream = Console.out, divisor: Int = 1) = { // デフォルト値が2個
+       out.println("time = " + System.currentTimeMillis() / divisor)
+}
+
+printTime2()
+printTime2(out = Console.err)
+printTime2(Console.err)
+printTime2(divisor = 1000)
+
+
 
