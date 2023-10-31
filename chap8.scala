@@ -161,4 +161,35 @@ printTime2(Console.err)
 printTime2(divisor = 1000)
 
 
+def boom(n: Int): Int = {
+       if (n == 0) throw new Exception("Boom!")
+       else boom(n - 1) + 1
+}
+
+def bang(n: Int): Int = { // 末尾再起
+       if (n == 0) throw new Exception("Bang!")
+       else bang(n - 1)
+}
+
+
+// 以下は最適化されない
+def isEven(n: Int): Boolean = {
+       if (n == 0) true 
+       else isOdd(n - 1)       
+} 
+
+def isOdd(n: Int): Boolean = {
+       if (n == 0) false 
+       else isEven(n - 1)
+}
+
+
+val funValue = nestedFun_
+def nestedFun(x: Int): Unit = {
+       if (x != 0) {
+              println(x)
+              funValue(x - 1)
+       }
+}
+
 
